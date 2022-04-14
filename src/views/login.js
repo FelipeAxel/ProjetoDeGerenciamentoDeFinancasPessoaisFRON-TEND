@@ -4,10 +4,6 @@ import FormGroup from "../components/form-group";
 
 
 class Login extends React.Component {
-
-
-
-
     render() {
         return (
             <div calssNmae="container">
