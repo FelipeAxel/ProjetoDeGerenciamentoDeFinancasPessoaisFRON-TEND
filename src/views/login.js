@@ -1,23 +1,39 @@
 import React from "react";
 import Card from "../components/cards";
 import FormGroup from "../components/form-group";
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import UsuarioService from "../service/usuarioService";
+import LocalStorageService from"../service/localstoregeService"
 
 
 class Login extends React.Component {
     state = {
         email: '',
-        senha: ''
+        senha: '',
+        mensagemErro: null
+    }
+
+    constructor() {
+        super();
+        this.service = new UsuarioService
     }
 
 
 
-    entrar = () => {
-        console.log('Email', this.state.email)
-        console.log('Senha', this.state.senha)
+    entrar = async () => {
+
+        this.service.autenticar({
+            email: this.state.email,
+            senha: this.state.senha
+        }).then(response => {
+            LocalStorageService.adicionarItem('_usuario_logado', response.data)
+            this.props.history.push('/home')
+        }).catch(erro => {
+            this.setState({ mensagemErro: erro.response.data })
+        })
     }
 
-    prepareCadastrar = ()=>{
+    prepareCadastrar = () => {
         this.props.history.push('/cadastro-usuarios')
     }
 
@@ -28,6 +44,9 @@ class Login extends React.Component {
                 <div className="col-md-6" style={{ position: 'relative', left: '300px' }}>
                     <div className="bs-docs-section">
                         <Card title="Login">
+                            <div className="row">
+                                <span>{this.state.mensagemErro}</span>
+                            </div>
                             <div className="row">
                                 <div className="col-lg-12">
                                     <div className="bs-component">
@@ -65,7 +84,6 @@ class Login extends React.Component {
                     </div>
                 </div>
             </div>
-
         )
     }
 }
