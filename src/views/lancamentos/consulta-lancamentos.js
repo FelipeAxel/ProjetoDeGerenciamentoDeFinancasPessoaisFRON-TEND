@@ -7,6 +7,8 @@ import LancamentosTable from './lancamentosTable'
 import LancamentoService from '../../app/service/lancamentoService'
 import LocalStorageService from '../../app/service/localstoregeService'
 
+import * as messages from '../../components/toastr'
+
 class ConsultaLancamentos extends React.Component {
 
 
@@ -14,18 +16,26 @@ class ConsultaLancamentos extends React.Component {
         ano: '',
         mes: '',
         tipo: '',
+        descricao: '',
         lancamentos: []
+
     }
     constructor() {
         super();
         this.service = new LancamentoService();
     }
     buscar = () => {
+
+        if (!this.state.ano) {
+            messages.mensagemErro('O preenchimento do campo ano é obrigatório.')
+            return false;
+        }
         const usuarioLogado = LocalStorageService.obterItem('_usuario_logado');
         const lancamentoFiltro = {
             ano: this.state.ano,
             mes: this.state.mes,
             tipo: this.state.tipo,
+            descricao: this.state.descricao,
             usuario: usuarioLogado.id
         }
         this.service
@@ -37,28 +47,28 @@ class ConsultaLancamentos extends React.Component {
             })
     }
 
-    render() {
-        const meses = [
-            { label: 'Selecione', value: '' },
-            { label: 'Janeiro', value: 1 },
-            { label: 'Fevereiro', value: 2 },
-            { label: 'Março', value: 3 },
-            { label: 'Abril', value: 4 },
-            { label: 'Maio', value: 5 },
-            { label: 'Junho', value: 6 },
-            { label: 'Julho', value: 7 },
-            { label: 'Agosto', value: 8 },
-            { label: 'Setembro', value: 9 },
-            { label: 'Outubro', value: 10 },
-            { label: 'Novembro', value: 11 },
-            { label: 'Dezembro', value: 12 }
-        ]
+    editar = (id) => {
+        console.log('edit lancandment', id)
+    }
 
-        const tipos = [
-            { label: 'Selecione', value: '' },
-            { label: 'Receita', value: 'RECEITA' },
-            { label: 'Despesa', value: 'DESPESA' }
-        ]
+    deletar = (lancamento) => {
+        this.service
+            .deletar(lancamento.id)
+            .then(response =>{
+                const lancamento = this.state.lancamentos;
+                const index = lancamento.indexOf(lancamento)
+                lancamento.splice(index, 1);
+                this.setState(lancamento)
+                messages.mensagemSucesso('Lançamento deletado com sucesso')
+            }).catch(error =>{
+                messages.mensagemErro('Ocorreu um erro ao deletar lançamento')
+            })
+    }
+
+    render() {
+        const meses = this.service.obterListaMeses();
+
+        const tipos = this.service.obterListaTipos();
 
         return (
             <Card title="Consulta Lançamento">
@@ -83,6 +93,15 @@ class ConsultaLancamentos extends React.Component {
                                     lista={meses} />
                             </FormGroup>
 
+                            <FormGroup htmlfor="inputDescricao" label="Descrição: *">
+                                <input type="text"
+                                    className="form-control"
+                                    id="inputDescricao"
+                                    value={this.state.descricao}
+                                    onChange={e => { this.setState({ descricao: e.target.value }) }}
+                                    placeholder="Digite a Descrição" />
+                            </FormGroup>
+
                             <FormGroup htmlfor="inputTipo"
                                 label="Tipo Lançamento: *">
                                 <SelectMenu id="inputTipo"
@@ -101,7 +120,9 @@ class ConsultaLancamentos extends React.Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="bs-component">
-                            <LancamentosTable lancamentos={this.state.lancamentos} />
+                            <LancamentosTable lancamentos={this.state.lancamentos}
+                                deletar={this.deletar} 
+                                editar = {this.editar}/>
                         </div>
                     </div>
                 </div>
