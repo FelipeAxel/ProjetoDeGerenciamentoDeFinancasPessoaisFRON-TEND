@@ -4,7 +4,7 @@ import CadastroUsuario from "../views/cadastroUsuario";
 import Home from '../views/home';
 import Login from "../views/login";
 import consultaLancamentos from "../views/lancamentos/consulta-lancamentos";
-
+import cadastroLancamento from "../views/lancamentos/cadastroLancamento";
 
 
 
@@ -16,6 +16,7 @@ function Rotas() {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/cadastro-usuarios" component={CadastroUsuario} />
                 <Route exact path="/consulta-lancamentos" component={consultaLancamentos} />
+                <Route exact path="/cadastro-lancamento" component={cadastroLancamento} />
             </Switch>
         </HashRouter>
     )
