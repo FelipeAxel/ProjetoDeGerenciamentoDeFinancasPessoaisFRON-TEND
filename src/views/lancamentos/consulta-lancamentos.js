@@ -108,6 +108,12 @@ class ConsultaLancamentos extends React.Component {
             })
     }
 
+    preparaFormularioCadastro =()=>{
+        this.props.history.push('/cadastro-lancamentos')
+    }
+
+
+
     render() {
         const meses = this.service.obterListaMeses();
         const tipos = this.service.obterListaTipos();

@@ -1,10 +1,13 @@
 import React from "react";
-
 import Card from "../../components/cards";
 import FormGroup from "../../components/form-group";
-import LancamentoService from "../../app/service/lancamentoService";
 import SelectMenu from "../../components/selectMenu";
+
 import { withRouter } from 'react-router-dom';
+import * as menssages from '../../components/toastr'
+
+import LancamentoService from '../../app/service/lancamentoService';
+import LocalStorageService from '../../app/service/localstoregeService'
 
 
 class CadastroLancamentos extends React.Component {
@@ -18,6 +21,7 @@ class CadastroLancamentos extends React.Component {
         usuario: '',
         tipo: '',
         status: '',
+        usuario: null
     }
 
 
@@ -26,9 +30,59 @@ class CadastroLancamentos extends React.Component {
         this.service = new LancamentoService();
     }
 
-    submit = ()=>{
-        console.log(this.state)
+    componentDidMount() {
+        const params = this.props.match.params
+
+        if (params.id) {
+            this.service
+                .obterPorId(params.id)
+                .then(response => {
+                    this.setState({ ...response.data, atualizando: true })
+                })
+                .catch(erros => {
+                    menssages.mensagemErro(erros.response.data)
+                })
+        }
     }
+
+    submit = () => {
+        const usuarioLogado = LocalStorageService.obterItem('_usuario_logado')
+
+        const { descricao, mes, ano, valor, tipo } = this.state;
+        const lancamento = { descricao, mes, ano, valor, tipo, usuario: usuarioLogado.id };
+
+        try{
+            this.service.validar(lancamento)
+        }catch(erro){
+            const mensagens = erro.mensagens;
+            mensagens.forEach(msg => menssages.mensagemErro(msg));
+            return false;
+        }    
+        this.service
+            .salvar(lancamento)
+            .then(response => {
+                this.props.history.push('consulta-lancamentos')
+                menssages.mensagemSucesso('Lançamento salvo com sucesso')
+            }).catch(error => {
+                menssages.mensagemErro(error.response.data)
+            })
+    }
+
+    atualizar = () => {
+        const { descricao, valor, mes, ano, tipo, status, usuario, id } = this.state;
+
+        const lancamento = { descricao, valor, mes, ano, tipo, usuario, status, id };
+
+        this.service
+            .atualizar(lancamento)
+            .then(response => {
+                this.props.history.push('/consulta-lancamentos')
+                menssages.mensagemSucesso('Lançamento atualizado com sucesso!')
+            }).catch(error => {
+                menssages.mensagemErro(error.response.data)
+            })
+    }
+
 
     handleChange = (event) => {
         const value = event.target.value;
