@@ -1,32 +1,45 @@
-import axios from "axios";
 
-const httClient = axios.create({
-    baseURL: 'http://localhost:8080'
+import axios from 'axios'
+
+const baseURL = process.env.REACT_APP_API_URL
+
+export const httpClient = axios.create({
+    baseURL: baseURL,
+    withCredentials: true
 })
 
 class ApiService {
-    constructor(apiurl) {
+
+    constructor(apiurl){
         this.apiurl = apiurl;
     }
 
-    post(url, objeto) {
-        const requestUrl = `${this.apiurl}${url}`
-        return httClient.post(requestUrl, objeto);
+    static registrarToken(token){
+        if(token){
+            httpClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        }        
     }
 
-    put(url, objeto) {
+    post(url, objeto){
         const requestUrl = `${this.apiurl}${url}`
-        return httClient.put(requestUrl, objeto)
+        return httpClient.post(requestUrl, objeto);
     }
 
-    delete(url) {
+    put(url, objeto){
         const requestUrl = `${this.apiurl}${url}`
-        return httClient.delete(requestUrl)
+        return httpClient.put(requestUrl, objeto);
     }
 
-    get(url) {
+    delete(url){
         const requestUrl = `${this.apiurl}${url}`
-        return httClient.get(requestUrl)
+        return httpClient.delete(requestUrl)
+    }
+
+    get(url){
+        const requestUrl = `${this.apiurl}${url}`
+        return httpClient.get(requestUrl)
     }
 }
+
+
 export default ApiService;

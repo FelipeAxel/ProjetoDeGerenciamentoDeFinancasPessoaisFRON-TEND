@@ -112,7 +112,20 @@ class ConsultaLancamentos extends React.Component {
         this.props.history.push('/cadastro-lancamentos')
     }
 
-
+    alterarStatus = (lancamento, status) => {
+        this.service
+            .alterarStatus(lancamento.id, status)
+            .then( response => {
+                const lancamentos = this.state.lancamentos;
+                const index = lancamentos.indexOf(lancamento);
+                if(index !== -1){
+                    lancamento['status'] = status;
+                    lancamentos[index] = lancamento
+                    this.setState({lancamento});
+                }
+                messages.mensagemSucesso("Status atualizado com sucesso!")
+            })
+    }
 
     render() {
         const meses = this.service.obterListaMeses();
