@@ -1,7 +1,6 @@
 import React from "react";
 
 import NavbarItem from '../components/navbaritem';
-import AuthService from "../app/service/authService";
 import { AuthConsumer } from '../main/provedorAutenticacao'
 
 function Navbar(props){
