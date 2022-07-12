@@ -11,7 +11,6 @@ import LocalStorageService from '../../app/service/localstoregeService'
 
 
 class CadastroLancamentos extends React.Component {
-<<<<<<< HEAD
 
     state = {
         id: null,
@@ -92,20 +91,12 @@ class CadastroLancamentos extends React.Component {
     }
 
     render(){
-=======
-    constructor() {
-        super();
-        this.service = new LancamentoService();
-    }
-    render() {
->>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
         const tipos = this.service.obterListaTipos();
         const meses = this.service.obterListaMeses();
 
 
 
         return (
-<<<<<<< HEAD
             <Card title={ this.state.atualizando ? 'Atualização de Lançamento'  : 'Cadastro de Lançamento' }>
                 <div className="row">
                     <div className="col-md-12">
@@ -115,50 +106,33 @@ class CadastroLancamentos extends React.Component {
                                    name="descricao"
                                    value={this.state.descricao}
                                    onChange={this.handleChange}  />
-=======
-            <Card title="Cadastro de Lançamento">
-
-                <div className="row">
-                    <div className="col-md-12">
-                        <FormGroup id="inputDescricao" label="Descrição: *">
-                            <input id="inputDescricao" type="text" className="form-control" />
->>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
                         </FormGroup>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-6">
                         <FormGroup id="inputAno" label="Ano: *">
-<<<<<<< HEAD
                             <input id="inputAno" 
                                    type="text"
                                    name="ano"
                                    value={this.state.ano}
                                    onChange={this.handleChange} 
                                    className="form-control" />
-=======
-                            <input id="inputAno" type="text" className="form-control" />
->>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
                         </FormGroup>
                     </div>
                     <div className="col-md-6">
                         <FormGroup id="inputMes" label="Mês: *">
-<<<<<<< HEAD
                             <SelectMenu id="inputMes" 
                                         value={this.state.mes}
                                         onChange={this.handleChange}
                                         lista={meses} 
                                         name="mes"
                                         className="form-control" />
-=======
-                            <SelectMenu id="inputMes" lista={meses} className="form-control"></SelectMenu>
->>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
                         </FormGroup>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-4">
-<<<<<<< HEAD
                          <FormGroup id="inputValor" label="Valor: *">
                             <input id="inputValor" 
                                    type="text"
@@ -166,14 +140,9 @@ class CadastroLancamentos extends React.Component {
                                    value={this.state.valor}
                                    onChange={this.handleChange} 
                                    className="form-control" />
-=======
-                        <FormGroup id="inputValor" label="Valor: *">
-                            <input id="inputValor" type="text" className="form-control" />
->>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
                         </FormGroup>
                     </div>
                     <div className="col-md-4">
-<<<<<<< HEAD
                          <FormGroup id="inputTipo" label="Tipo: *">
                             <SelectMenu id="inputTipo" 
                                         lista={tipos} 
@@ -181,14 +150,9 @@ class CadastroLancamentos extends React.Component {
                                         value={this.state.tipo}
                                         onChange={this.handleChange}
                                         className="form-control" />
-=======
-                        <FormGroup id="inputTipo" label="Tipo: *" >
-                            <SelectMenu id="inputTipo" lista={tipos} className="form-control" ></SelectMenu>
->>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
                         </FormGroup>
                     </div>
                     <div className="col-md-4">
-<<<<<<< HEAD
                          <FormGroup id="inputStatus" label="Status: ">
                             <input type="text" 
                                    className="form-control" 
@@ -219,17 +183,6 @@ class CadastroLancamentos extends React.Component {
                                 className="btn btn-danger">
                                 <i className="pi pi-times"></i>Cancelar
                         </button>
-=======
-                        <FormGroup id="inputStatus" label="Status: ">
-                            <input id="inputStatus" type="text" className="form-control" disabled />
-                        </FormGroup>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-6">
-                    <button className="btn btn-success">Salvar</button>
-                    <button className="btn btn-danger">Cancelar</button>
->>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
                     </div>
                 </div>
             </Card>

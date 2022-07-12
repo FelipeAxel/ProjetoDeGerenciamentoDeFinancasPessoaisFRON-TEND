@@ -33,7 +33,6 @@ export default class LancamentoService extends ApiService{
         ]
     }
 
-<<<<<<< HEAD
     obterPorId(id){
         return this.get(`/${id}`);
     }
@@ -79,9 +78,6 @@ export default class LancamentoService extends ApiService{
     }
 
     consultar(lancamentoFiltro) {
-=======
-    consultar(lancamentoFiltro){
->>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
         let params = `?ano=${lancamentoFiltro.ano}`
         if(lancamentoFiltro.mes){
             params = `${params}&mes=${lancamentoFiltro.mes}`
