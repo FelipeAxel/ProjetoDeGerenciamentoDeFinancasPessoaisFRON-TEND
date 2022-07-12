@@ -2438,11 +2438,14 @@ axe-core@^4.3.5:
   integrity sha512-gd1kmb21kwNuWr6BQz8fv6GNECPBnUasepcoLbekws23NVBLODdsClRZ+bQ8+9Uomf3Sm3+Vwn0oYG9NvwnJCw==
 >>>>>>> parent of 69de65b (Erro na pasta node_modules)
 
+<<<<<<< HEAD
 aws4@^1.8.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
+=======
+>>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
 axios@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.1.tgz#1ede41c51fcf51bbbd6fd43669caaa4f0495aaa9"
@@ -5090,6 +5093,7 @@ flatted@^2.0.0:
   integrity sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 flatten@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.3.tgz#c1283ac9f27b368abc1e36d1ff7b04501a30356b"
@@ -5104,6 +5108,9 @@ flush-write-stream@^1.0.0:
     readable-stream "^2.3.6"
 
 follow-redirects@^1.0.0:
+=======
+follow-redirects@^1.0.0, follow-redirects@^1.14.8:
+>>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
 =======
 follow-redirects@^1.0.0, follow-redirects@^1.14.8:
 >>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
@@ -5172,15 +5179,23 @@ fork-ts-checker-webpack-plugin@^6.5.0:
     worker-rpc "^0.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 form-data@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.0.tgz#93919daeaf361ee529584b9b31664dc12c9fa452"
   integrity sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==
+=======
+form-data@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/form-data/-/form-data-3.0.1.tgz"
+  integrity sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==
+>>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
   dependencies:
     asynckit "^0.4.0"
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
+<<<<<<< HEAD
 form-data@~2.3.2:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.3.3.tgz#dcce52c05f644f298c6a7ab936bd724ceffbf3a6"
@@ -5190,6 +5205,8 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
+=======
+>>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
 =======
 >>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
 forwarded@0.2.0:

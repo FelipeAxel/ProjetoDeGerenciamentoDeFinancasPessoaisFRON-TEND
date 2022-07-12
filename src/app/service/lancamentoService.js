@@ -32,7 +32,7 @@ export default class LancamentoService extends ApiService{
         ]
     }
 
-    consultar(lancamentoFiltro) {
+    consultar(lancamentoFiltro){
         let params = `?ano=${lancamentoFiltro.ano}`
         if(lancamentoFiltro.mes){
             params = `${params}&mes=${lancamentoFiltro.mes}`
