@@ -77,9 +77,40 @@ class ConsultaLancamentos extends React.Component {
                 this.setState({lancamentos: lancamentos, showConfirmDialog:false})
                 messages.mensagemSucesso('Lançamento deletado com sucesso')
             }).catch(error => {
+<<<<<<< HEAD
                 messages.mensagemErro('Ocorreu um erro ao deletar lançamento')
             })
     }
+=======
+                messages.mensagemErro('Ocorreu um erro ao tentar deletar o Lançamento')
+            })
+    }
+
+    preparaFormularioCadastro = () => {
+        this.props.history.push('/cadastro-lancamentos')
+    }
+
+    alterarStatus = (lancamento, status) => {
+        this.service
+            .alterarStatus(lancamento.id, status)
+            .then(response => {
+                const lancamentos = this.state.lancamentos;
+                const index = lancamentos.indexOf(lancamento);
+                if (index !== -1) {
+                    lancamento['status'] = status;
+                    lancamentos[index] = lancamento
+                    this.setState({ lancamento });
+                }
+                messages.mensagemSucesso("Status atualizado com sucesso!")
+            })
+    }
+
+    preparaFormularioCadastro =()=>{
+        this.props.history.push('/cadastro-lancamentos')
+    }
+
+
+>>>>>>> parent of 69de65b (Erro na pasta node_modules)
 
     render() {
         const meses = this.service.obterListaMeses();

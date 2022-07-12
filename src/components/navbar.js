@@ -14,7 +14,11 @@ function NavBar() {
                     <ul className="navbar-nav">
                         <NavBarItem href="#/home" label="Home" />
                         <NavBarItem href="#/cadastro-usuarios" label="Usuários" />
+<<<<<<< HEAD
                         <NavBarItem href="#/" label="Lancamentos" />
+=======
+                        <NavBarItem href="#/consulta-lancamentos" label="Lancamentos" />
+>>>>>>> parent of 69de65b (Erro na pasta node_modules)
                         <NavBarItem href="#/Login" label="Login" />
                     </ul>
                 </div>

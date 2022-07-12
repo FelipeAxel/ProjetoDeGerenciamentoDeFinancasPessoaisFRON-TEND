@@ -32,7 +32,51 @@ export default class LancamentoService extends ApiService{
         ]
     }
 
+<<<<<<< HEAD
     consultar(lancamentoFiltro){
+=======
+    obterPorId(id){
+        return this.get(`/${id}`);
+    }
+
+    salvar(lancamento){
+        return this.post('/', lancamento);
+    }
+
+    atualizar(lancamento){
+        return this.put(`/${lancamento.id}`, lancamento);
+    }
+
+    validar(lancamento){
+        const erros = [];
+
+        if(!lancamento.ano){
+            erros.push("Informe o Ano.")
+        }
+
+        if(!lancamento.mes){
+            erros.push("Informe o Mês.")
+        }
+
+        if(!lancamento.descricao){
+            erros.push("Informe a Descrição.")
+        }
+
+        if(!lancamento.valor){
+            erros.push("Informe o Valor.")
+        }
+
+        if(!lancamento.tipo){
+            erros.push("Informe o Tipo.")
+        }
+
+        if(erros && erros.length > 0){
+            throw new ErroValidacao(erros);
+        }
+    }
+
+    consultar(lancamentoFiltro) {
+>>>>>>> parent of 69de65b (Erro na pasta node_modules)
         let params = `?ano=${lancamentoFiltro.ano}`
         if(lancamentoFiltro.mes){
             params = `${params}&mes=${lancamentoFiltro.mes}`

@@ -29,4 +29,8 @@ class ApiService {
         return httClient.get(requestUrl)
     }
 }
+<<<<<<< HEAD
 export default ApiService;  
+=======
+export default ApiService;
+>>>>>>> parent of 69de65b (Erro na pasta node_modules)
