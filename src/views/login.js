@@ -4,7 +4,6 @@ import FormGroup from "../components/form-group";
 import { withRouter } from 'react-router-dom';
 import UsuarioService from "../app/service/usuarioService";
 import { mensagemErro } from '../components/toastr'
-import { AuthContext } from "../main/provedorAutenticacao";
 
 class Login extends React.Component{
 
@@ -18,15 +17,22 @@ class Login extends React.Component{
         this.service = new UsuarioService();
     }
 
+<<<<<<< HEAD
     entrar = () => {
+=======
+
+
+    entrar = async () => {
+
+>>>>>>> parent of 69de65b (Erro na pasta node_modules)
         this.service.autenticar({
             email: this.state.email,
             senha: this.state.senha
-        }).then( response => {
-            this.context.iniciarSessao(response.data)
+        }).then(response => {
+            LocalStorageService.adicionarItem('_usuario_logado', response.data)
             this.props.history.push('/home')
-        }).catch( erro => {
-           mensagemErro(erro.response.data)
+        }).catch(erro => {
+            mensagemErro(erro.response.data)
         })
     }
 
@@ -81,6 +87,11 @@ class Login extends React.Component{
     }
 }
 
+<<<<<<< HEAD
 Login.contextType = AuthContext
 
 export default withRouter( Login ) 
+=======
+
+export default withRouter(Login) 
+>>>>>>> parent of 69de65b (Erro na pasta node_modules)

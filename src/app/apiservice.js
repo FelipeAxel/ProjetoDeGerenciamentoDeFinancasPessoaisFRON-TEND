@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from 'axios'
 
 const baseURL = process.env.REACT_APP_API_URL
@@ -5,40 +6,37 @@ const baseURL = process.env.REACT_APP_API_URL
 export const httpClient = axios.create({
     baseURL: baseURL,
     withCredentials: true
+=======
+import axios from "axios";
+
+const httClient = axios.create({
+    baseURL: 'http://localhost:8080'
+>>>>>>> parent of 69de65b (Erro na pasta node_modules)
 })
 
 class ApiService {
-
-    constructor(apiurl){
+    constructor(apiurl) {
         this.apiurl = apiurl;
     }
 
-    static registrarToken(token){
-        if(token){
-            httpClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
-        }        
+    post(url, objeto) {
+        const requestUrl = `${this.apiurl}${url}`
+        return httClient.post(requestUrl, objeto);
     }
 
-    post(url, objeto){
+    put(url, objeto) {
         const requestUrl = `${this.apiurl}${url}`
-        return httpClient.post(requestUrl, objeto);
+        return httClient.put(requestUrl, objeto)
     }
 
-    put(url, objeto){
+    delete(url) {
         const requestUrl = `${this.apiurl}${url}`
-        return httpClient.put(requestUrl, objeto);
+        return httClient.delete(requestUrl)
     }
 
-    delete(url){
+    get(url) {
         const requestUrl = `${this.apiurl}${url}`
-        return httpClient.delete(requestUrl)
-    }
-
-    get(url){
-        const requestUrl = `${this.apiurl}${url}`
-        return httpClient.get(requestUrl)
+        return httClient.get(requestUrl)
     }
 }
-
-
 export default ApiService;
