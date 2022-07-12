@@ -17,11 +17,6 @@ class CadastroLancamentos extends React.Component {
         ano: '',
         tipo: '',
         status: '',
-<<<<<<< HEAD
-        usuario: null,
-        atualizando: false
-=======
->>>>>>> parent of 8a2b038 (Correção do bug enum/mes, correção de atualização PUT pendente/refatoração da logica de validação de lançamentos e usuario.)
     }
 
     constructor(){
@@ -29,67 +24,10 @@ class CadastroLancamentos extends React.Component {
         this.service = new LancamentoService();
     }
 
-<<<<<<< HEAD
-    componentDidMount(){
-        const params = this.props.match.params
-       
-        if(params.id){
-            this.service
-                .obterPorId(params.id)
-                .then(response => {
-                    this.setState( {...response.data, atualizando: true} )
-                })
-                .catch(erros => {
-                    menssages.mensagemErro(erros.response.data)
-                })
-        }
-    }
-
-    submit = () => {
-        const usuarioLogado = LocalStorageService.obterItem('_usuario_logado')
-
-        const { descricao, valor, mes, ano, tipo } = this.state;
-        const lancamento = { descricao, valor, mes, ano, tipo, usuario: usuarioLogado.id };
-
-        try{
-            this.service.validar(lancamento)
-        }catch(erro){
-            const mensagens = erro.mensagens;
-            mensagens.forEach(msg => menssages.mensagemErro(msg));
-            return false;
-        }     
-
-        this.service
-            .salvar(lancamento)
-            .then(response => {
-                this.props.history.push('/consulta-lancamentos')
-                menssages.mensagemSucesso('Lançamento cadastrado com sucesso!')
-            }).catch(error => {
-                menssages.mensagemErro(error.response.data)
-            })
-    }
-
-    atualizar = () => {
-        const { descricao, valor, mes, ano, tipo, status, usuario, id } = this.state;
-
-        const lancamento = { descricao, valor, mes, ano, tipo, usuario, status, id };
-        
-        this.service
-            .atualizar(lancamento)
-            .then(response => {
-                this.props.history.push('/consulta-lancamentos')
-                menssages.mensagemSucesso('Lançamento atualizado com sucesso!')
-            }).catch(error => {
-                menssages.mensagemErro(error.response.data)
-            })
-    }
-
-=======
     submit = ()=>{
         console.log(this.state)
     }
 
->>>>>>> parent of 8a2b038 (Correção do bug enum/mes, correção de atualização PUT pendente/refatoração da logica de validação de lançamentos e usuario.)
     handleChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
