@@ -1,5 +1,4 @@
 import toastr from 'toastr'
-
 toastr.options = {
     "closeButton": true,
     "debug": false,
@@ -16,9 +15,9 @@ toastr.options = {
     "hideEasing": "linear",
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
-  }
+}
 
-export function mostrarMensagem(titulo, mensagem, tipo){
+export function mostrarMensagem(titulo, mensagem, tipo) {
     toastr[tipo](mensagem, titulo)
 }
 
@@ -26,10 +25,10 @@ export function mensagemErro(mensagem){
     mostrarMensagem('Erro', mensagem, 'error')
 }
 
-export function mensagemSucesso(mensagem){
+export function mensagemSucesso(mensagem) {
     mostrarMensagem('Sucesso', mensagem, 'success')
 }
 
-export function mensagemAlert(mensagem){
+export function mostrarAlerta(mensagem) {
     mostrarMensagem('Alerta', mensagem, 'warning')
 }

@@ -2,14 +2,14 @@
 import ApiService from "../apiservice";
 import ErroValidacao from "../exception/ErroValidacao";
 
-class LancamentoService extends ApiService {
-    constructor() {
+export default class LancamentoService extends ApiService{
+    constructor(){
         super('/api/lancamentos')
     }
 
-    obterListaMeses() {
-        return [
-            { label: 'Selecione...', value: '' },
+    obterListaMeses(){
+       return [
+            { label: 'Selecione', value: '' },
             { label: 'Janeiro', value: 1 },
             { label: 'Fevereiro', value: 2 },
             { label: 'Março', value: 3 },
@@ -21,10 +21,11 @@ class LancamentoService extends ApiService {
             { label: 'Setembro', value: 9 },
             { label: 'Outubro', value: 10 },
             { label: 'Novembro', value: 11 },
-            { label: 'Dezembro', value: 12 },
+            { label: 'Dezembro', value: 12 }
         ]
     }
-    obterListaTipos() {
+
+    obterListaTipos(){
         return [
             { label: 'Selecione', value: '' },
             { label: 'Receita', value: 'RECEITA' },
@@ -32,6 +33,7 @@ class LancamentoService extends ApiService {
         ]
     }
 
+<<<<<<< HEAD
     obterPorId(id){
         return this.get(`/${id}`);
     }
@@ -77,27 +79,29 @@ class LancamentoService extends ApiService {
     }
 
     consultar(lancamentoFiltro) {
+=======
+    consultar(lancamentoFiltro){
+>>>>>>> parent of 9f4d829 (Correção do bug mes/String e DESPESA/RECEITA enum)
         let params = `?ano=${lancamentoFiltro.ano}`
-        if (lancamentoFiltro.mes) {
+        if(lancamentoFiltro.mes){
             params = `${params}&mes=${lancamentoFiltro.mes}`
         }
-        if (lancamentoFiltro.tipo) {
+        if(lancamentoFiltro.tipo){
             params = `${params}&tipo=${lancamentoFiltro.tipo}`
         }
-        if (lancamentoFiltro.status) {
+        if(lancamentoFiltro.status){
             params = `${params}&status=${lancamentoFiltro.status}`
         }
-        if (lancamentoFiltro.usuario) {
+        if(lancamentoFiltro.usuario){
             params = `${params}&usuario=${lancamentoFiltro.usuario}`
         }
-        if (lancamentoFiltro.descricao) {
+        if(lancamentoFiltro.descricao){
             params = `${params}&descricao=${lancamentoFiltro.descricao}`
         }
         return this.get(params)
     }
 
-    deletar(id) {
+    deletar (id){
         return this.delete(`/${id}`)
     }
 }
-export default LancamentoService;
