@@ -1,10 +1,6 @@
 import React from "react";
 import UsuarioService from "../app/service/usuarioService";
-<<<<<<< HEAD
-import { AuthContext } from "../main/provedorAutenticacao";
-=======
 import LocalStorageService from "../app/service/localstoregeService";
->>>>>>> parent of 69de65b (Erro na pasta node_modules)
 
 
 class Home extends React.Component{
@@ -54,10 +50,4 @@ class Home extends React.Component{
         )
     }
 }
-<<<<<<< HEAD
-
-Home.contextType = AuthContext;
-
-=======
->>>>>>> parent of 69de65b (Erro na pasta node_modules)
 export default Home

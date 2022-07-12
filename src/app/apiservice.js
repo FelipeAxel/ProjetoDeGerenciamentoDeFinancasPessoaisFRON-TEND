@@ -1,17 +1,7 @@
-<<<<<<< HEAD
-import axios from 'axios'
-
-const baseURL = process.env.REACT_APP_API_URL
-
-export const httpClient = axios.create({
-    baseURL: baseURL,
-    withCredentials: true
-=======
 import axios from "axios";
 
 const httClient = axios.create({
     baseURL: 'http://localhost:8080'
->>>>>>> parent of 69de65b (Erro na pasta node_modules)
 })
 
 class ApiService {
@@ -39,4 +29,4 @@ class ApiService {
         return httClient.get(requestUrl)
     }
 }
-export default ApiService;
+export default ApiService;  

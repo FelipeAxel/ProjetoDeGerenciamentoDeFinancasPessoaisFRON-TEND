@@ -17,14 +17,7 @@ class Login extends React.Component{
         this.service = new UsuarioService();
     }
 
-<<<<<<< HEAD
     entrar = () => {
-=======
-
-
-    entrar = async () => {
-
->>>>>>> parent of 69de65b (Erro na pasta node_modules)
         this.service.autenticar({
             email: this.state.email,
             senha: this.state.senha
@@ -87,11 +80,6 @@ class Login extends React.Component{
     }
 }
 
-<<<<<<< HEAD
 Login.contextType = AuthContext
 
 export default withRouter( Login ) 
-=======
-
-export default withRouter(Login) 
->>>>>>> parent of 69de65b (Erro na pasta node_modules)

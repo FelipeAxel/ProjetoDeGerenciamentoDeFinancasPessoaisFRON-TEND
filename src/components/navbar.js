@@ -1,11 +1,6 @@
 import React from "react";
 
-<<<<<<< HEAD
-import NavbarItem from '../components/navbaritem';
-import { AuthConsumer } from '../main/provedorAutenticacao'
-=======
 import NavBarItem from "./navbaritem";
->>>>>>> parent of 69de65b (Erro na pasta node_modules)
 
 function NavBar() {
     return (
