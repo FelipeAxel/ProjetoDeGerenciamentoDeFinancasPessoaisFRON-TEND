@@ -17,7 +17,7 @@ class Login extends React.Component{
         this.service = new UsuarioService();
     }
 
-    entrar = () => {
+  entrar = () => {
         this.service.autenticar({
             email: this.state.email,
             senha: this.state.senha
@@ -28,7 +28,7 @@ class Login extends React.Component{
             mensagemErro(erro.response.data)
         })
     }
-
+ 
     prepareCadastrar = () => {
         this.props.history.push('/cadastro-usuarios')
     }
@@ -79,7 +79,4 @@ class Login extends React.Component{
         )
     }
 }
-
-Login.contextType = AuthContext
-
 export default withRouter( Login ) 
