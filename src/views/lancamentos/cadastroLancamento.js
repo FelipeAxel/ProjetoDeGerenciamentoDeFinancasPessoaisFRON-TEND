@@ -1,13 +1,10 @@
 import React from "react";
+
 import Card from "../../components/cards";
 import FormGroup from "../../components/form-group";
+import LancamentoService from "../../app/service/lancamentoService";
 import SelectMenu from "../../components/selectMenu";
-
 import { withRouter } from 'react-router-dom';
-import * as menssages from '../../components/toastr'
-
-import LancamentoService from '../../app/service/lancamentoService';
-import LocalStorageService from '../../app/service/localstoregeService'
 
 
 class CadastroLancamentos extends React.Component {
@@ -20,8 +17,11 @@ class CadastroLancamentos extends React.Component {
         ano: '',
         tipo: '',
         status: '',
+<<<<<<< HEAD
         usuario: null,
         atualizando: false
+=======
+>>>>>>> parent of 8a2b038 (Correção do bug enum/mes, correção de atualização PUT pendente/refatoração da logica de validação de lançamentos e usuario.)
     }
 
     constructor(){
@@ -29,6 +29,7 @@ class CadastroLancamentos extends React.Component {
         this.service = new LancamentoService();
     }
 
+<<<<<<< HEAD
     componentDidMount(){
         const params = this.props.match.params
        
@@ -83,6 +84,12 @@ class CadastroLancamentos extends React.Component {
             })
     }
 
+=======
+    submit = ()=>{
+        console.log(this.state)
+    }
+
+>>>>>>> parent of 8a2b038 (Correção do bug enum/mes, correção de atualização PUT pendente/refatoração da logica de validação de lançamentos e usuario.)
     handleChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
